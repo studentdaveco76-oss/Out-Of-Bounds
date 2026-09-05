@@ -36,32 +36,12 @@
     border-bottom: 1px solid var(--green-line);
   }
   .logo-mark{
-    display:inline-flex;
-    align-items:center;
-    gap: 14px;
-    margin-bottom: 2rem;
+    display:block;
+    width: min(100%, 560px);
+    margin: 0 auto 2rem;
+    height: auto;
   }
-  .ball-icon{
-    width:40px; height:40px; border-radius:50%;
-    background: var(--cream);
-    position:relative;
-    flex-shrink:0;
-  }
-  .ball-icon::before, .ball-icon::after{
-    content:"";
-    position:absolute;
-    top:5px; bottom:5px;
-    width:3px;
-    left:50%;
-    border-radius: 2px;
-  }
-  .ball-icon::before{ background: var(--green-bright); transform: translateX(-7px) rotate(10deg); }
-  .ball-icon::after{ background: #2f4d6b; transform: translateX(5px) rotate(-8deg); }
-  .wordmark{
-    font-family:'Anton', sans-serif;
-    font-size: 1.6rem;
-    letter-spacing: 0.03em;
-  }
+  .logo-mark img{ display:block; width:100%; height:auto; }
   h1{
     font-size: clamp(2.4rem, 7vw, 4rem);
     line-height: 1;
@@ -199,8 +179,7 @@
 
   <section class="hero">
     <div class="logo-mark">
-      <span class="ball-icon"></span>
-      <span class="wordmark">OUT OF BOUNDS</span>
+      <img src="logo.svg" alt="Out Of Bounds recycled golf balls">
     </div>
     <h1>Golf balls, <span>honestly</span> graded.</h1>
     <p>Every ball cleaned, inspected, and sorted by real condition — no mystery mixes, just what you paid for.</p>
