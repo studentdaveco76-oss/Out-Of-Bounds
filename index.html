@@ -5,255 +5,264 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Out of Bounds — Recycled Golf Balls</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap');
 
   :root{
-    --fairway: #1f3d2b;
-    --fairway-dark: #14281c;
-    --cream: #f4f1e8;
-    --ball: #ffffff;
-    --stripe-red: #c0392b;
-    --stripe-blue: #1f5fa8;
-    --ink: #14281c;
+    --bg: #0c0d0b;
+    --panel: #141613;
+    --green: #3f6b2f;
+    --green-bright: #6ba648;
+    --green-line: #2e4a24;
+    --cream: #f2f0e6;
+    --muted: #a9a89e;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{
     font-family: 'Inter', sans-serif;
-    background: var(--cream);
-    color: var(--ink);
-    line-height: 1.6;
+    background: var(--bg);
+    color: var(--cream);
+    line-height: 1.65;
   }
-  h1,h2,h3{
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 0.02em;
+  h1,h2,h3,.display{
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--cream);
   }
 
   .hero{
-    background: linear-gradient(180deg, var(--fairway) 0%, var(--fairway-dark) 100%);
-    color: var(--cream);
-    padding: 4rem 1.5rem 5rem;
+    padding: 3.5rem 1.5rem 3rem;
     text-align:center;
-    position: relative;
-    overflow:hidden;
+    border-bottom: 1px solid var(--green-line);
   }
-  .hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 40px);
-  }
-  .hero-content{ position:relative; max-width: 640px; margin:0 auto; }
   .logo-mark{
     display:inline-flex;
     align-items:center;
-    gap: 12px;
-    margin-bottom: 1.5rem;
+    gap: 14px;
+    margin-bottom: 2rem;
   }
   .ball-icon{
-    width:36px; height:36px; border-radius:50%;
-    background: var(--ball);
+    width:40px; height:40px; border-radius:50%;
+    background: var(--cream);
     position:relative;
-    box-shadow: inset -4px -4px 0 rgba(0,0,0,0.06);
+    flex-shrink:0;
   }
   .ball-icon::before, .ball-icon::after{
     content:"";
     position:absolute;
-    top:4px; bottom:4px;
+    top:5px; bottom:5px;
     width:3px;
     left:50%;
     border-radius: 2px;
   }
-  .ball-icon::before{ background: var(--stripe-red); transform: translateX(-6px) rotate(8deg); }
-  .ball-icon::after{ background: var(--stripe-blue); transform: translateX(4px) rotate(-6deg); }
-  .wordmark{ font-size: 1.4rem; letter-spacing: 0.08em; }
-
+  .ball-icon::before{ background: var(--green-bright); transform: translateX(-7px) rotate(10deg); }
+  .ball-icon::after{ background: #2f4d6b; transform: translateX(5px) rotate(-8deg); }
+  .wordmark{
+    font-family:'Anton', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.03em;
+  }
   h1{
-    font-size: clamp(2.6rem, 7vw, 4.5rem);
-    line-height: 0.95;
+    font-size: clamp(2.4rem, 7vw, 4rem);
+    line-height: 1;
     margin-bottom: 1rem;
   }
+  h1 span{ color: var(--green-bright); }
   .hero p{
-    font-size: 1.1rem;
-    color: rgba(244,241,232,0.8);
-    max-width: 480px;
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 460px;
     margin: 0 auto 2rem;
   }
   .cta-row{ display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
   .btn{
     display:inline-block;
-    padding: 0.9rem 1.8rem;
-    border-radius: 4px;
+    padding: 0.85rem 1.7rem;
+    border-radius: 3px;
     font-weight:600;
     text-decoration:none;
-    font-size:0.95rem;
+    font-size:0.9rem;
     border: 1.5px solid transparent;
     cursor:pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
   }
-  .btn-primary{ background: var(--stripe-red); color: white; }
-  .btn-secondary{ border-color: rgba(244,241,232,0.4); color: var(--cream); }
+  .btn-primary{ background: var(--green-bright); color: #0c0d0b; }
+  .btn-secondary{ border-color: var(--green-line); color: var(--cream); }
 
-  .grades{
-    max-width: 1000px;
-    margin: -2.5rem auto 0;
-    padding: 0 1.5rem;
-    position:relative;
-    z-index:2;
+  .section{ max-width: 900px; margin: 0 auto; padding: 4.5rem 1.5rem; }
+  .section-head{ text-align:center; max-width:520px; margin:0 auto 2.5rem; }
+  .section-head h2{ font-size: clamp(1.8rem, 5vw, 2.4rem); }
+  .section-head .rule{
+    width: 90px; height: 2px; background: var(--green-line);
+    margin: 0.9rem auto 0;
+    position: relative;
   }
-  .grades-inner{
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 12px 30px rgba(20,40,28,0.15);
+  .section-head .rule::before{
+    content:""; position:absolute; left:50%; top:50%;
+    transform: translate(-50%,-50%);
+    width:8px; height:8px; border-radius:50%;
+    background: var(--cream);
+  }
+
+  .grade-row{
     display:grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: 90px 1fr;
+    border: 1px solid var(--green-line);
+    border-radius: 6px;
     overflow:hidden;
+    margin-bottom: 1rem;
+    background: var(--panel);
   }
-  .grade-cell{
-    padding: 1.2rem 0.8rem;
-    text-align:center;
-    border-right: 1px solid #ece8db;
+  .grade-badge{
+    background: var(--green);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Anton', sans-serif;
+    font-size: 1.9rem;
+    color: var(--cream);
+    clip-path: polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%);
+    padding-right: 14px;
   }
-  .grade-cell:last-child{ border-right:none; }
-  .grade-cell .g{
-    font-family:'Bebas Neue', sans-serif;
-    font-size: 1.8rem;
-    color: var(--fairway);
-  }
-  .grade-cell .label{ font-size: 0.72rem; color:#7a7666; text-transform:uppercase; letter-spacing:0.05em;}
+  .grade-body{ padding: 0.9rem 1.2rem; }
+  .grade-body h3{ font-size: 1.05rem; margin-bottom: 0.3rem; }
+  .grade-body p{ font-size: 0.85rem; color: var(--muted); }
 
-  .section{ max-width: 1000px; margin: 0 auto; padding: 5rem 1.5rem; }
-  .why-grid{
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
-    margin-top: 2.5rem;
+  .faq-item{
+    border-bottom: 1px solid var(--green-line);
+    padding: 1.3rem 0;
   }
-  .why-card h3{ font-size:1.4rem; color: var(--fairway); margin-bottom:0.5rem; }
-  .why-card p{ font-size:0.95rem; color:#5a5748; }
-  .why-num{
-    font-family:'Bebas Neue', sans-serif;
-    font-size:3rem;
-    color: var(--stripe-red);
-    line-height:1;
-    margin-bottom: 0.5rem;
-    display:block;
+  .faq-item:last-child{ border-bottom:none; }
+  .faq-item h3{
+    font-family:'Inter', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-transform:none;
+    color: var(--cream);
+    margin-bottom: 0.4rem;
   }
+  .faq-item p{ font-size: 0.92rem; color: var(--muted); }
 
-  .section-head{ text-align:center; max-width:520px; margin:0 auto; }
-  .section-head h2{ font-size: clamp(2rem, 5vw, 2.8rem); color:var(--fairway); }
-  .section-head p{ color:#5a5748; margin-top:0.5rem; }
-
-  .products{ background: var(--fairway); color: var(--cream); }
-  .products .section-head h2{ color: var(--cream); }
-  .products .section-head p{ color: rgba(244,241,232,0.7); }
+  .products{ background: var(--panel); border-top: 1px solid var(--green-line); border-bottom: 1px solid var(--green-line); }
   .product-grid{
     display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
   }
   .product-card{
-    background: rgba(244,241,232,0.06);
-    border: 1px solid rgba(244,241,232,0.15);
-    border-radius: 8px;
-    padding: 1.6rem;
+    background: var(--bg);
+    border: 1px solid var(--green-line);
+    border-radius: 6px;
+    padding: 1.4rem;
   }
   .product-card .tag{
     display:inline-block;
-    font-size:0.7rem;
+    font-size:0.68rem;
     letter-spacing:0.05em;
     text-transform:uppercase;
-    background: var(--stripe-red);
+    background: var(--green);
     padding: 0.2rem 0.6rem;
     border-radius:3px;
     margin-bottom:0.8rem;
+    font-weight: 600;
   }
-  .product-card h3{ font-size:1.5rem; margin-bottom:0.3rem;}
-  .product-card .price{ font-size:1.3rem; font-weight:600; margin: 0.6rem 0; }
-  .product-card p{ font-size:0.9rem; color: rgba(244,241,232,0.75); }
+  .product-card h3{ font-size:1.3rem; margin-bottom:0.3rem; }
+  .product-card .price{ font-size:1.2rem; font-weight:700; margin: 0.5rem 0; font-family:'Inter',sans-serif; color: var(--green-bright); }
+  .product-card p{ font-size:0.88rem; color: var(--muted); }
 
   footer{
     text-align:center;
     padding: 3rem 1.5rem;
-    color: #7a7666;
-    font-size: 0.85rem;
   }
-  footer .wordmark-small{
-    font-family:'Bebas Neue', sans-serif;
-    color: var(--fairway);
-    font-size:1.1rem;
-    letter-spacing:0.05em;
-    margin-bottom: 0.5rem;
+  footer .foot-line{
+    width: 90px; height: 2px; background: var(--green-line);
+    margin: 0 auto 1.2rem;
+    position: relative;
   }
+  footer .foot-line::before{
+    content:""; position:absolute; left:50%; top:50%;
+    transform: translate(-50%,-50%);
+    width:8px; height:8px; border-radius:50%;
+    background: var(--cream);
+  }
+  footer p{ color: var(--muted); font-size: 0.9rem; }
+  footer .brand-note{ font-family:'Anton', sans-serif; color: var(--cream); font-size: 1rem; margin-bottom: 0.5rem; }
 
-  @media (max-width:640px){
-    .grades-inner{ grid-template-columns: repeat(5,1fr); }
-    .grade-cell{ padding: 0.9rem 0.4rem; }
-    .grade-cell .g{ font-size:1.3rem; }
-    .grade-cell .label{ font-size:0.6rem; }
+  @media (max-width:480px){
+    .grade-row{ grid-template-columns: 70px 1fr; }
+    .grade-badge{ font-size: 1.4rem; }
   }
 </style>
 </head>
 <body>
 
   <section class="hero">
-    <div class="hero-content">
-      <div class="logo-mark">
-        <span class="ball-icon"></span>
-        <span class="wordmark">OUT OF BOUNDS</span>
-      </div>
-      <h1>Quality used golf balls,<br>honestly graded.</h1>
-      <p>Every ball is cleaned, inspected, and sorted by condition — so you know exactly what's landing in your bag.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#products">Shop lots</a>
-        <a class="btn btn-secondary" href="#grading">See grading guide</a>
-      </div>
+    <div class="logo-mark">
+      <span class="ball-icon"></span>
+      <span class="wordmark">OUT OF BOUNDS</span>
+    </div>
+    <h1>Golf balls, <span>honestly</span> graded.</h1>
+    <p>Every ball cleaned, inspected, and sorted by real condition — no mystery mixes, just what you paid for.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#products">Shop lots</a>
+      <a class="btn btn-secondary" href="#grading">Grading guide</a>
     </div>
   </section>
 
-  <div class="grades" id="grading">
-    <div class="grades-inner">
-      <div class="grade-cell"><div class="g">5A</div><div class="label">Like new</div></div>
-      <div class="grade-cell"><div class="g">4A</div><div class="label">Excellent</div></div>
-      <div class="grade-cell"><div class="g">3A</div><div class="label">Good</div></div>
-      <div class="grade-cell"><div class="g">2A</div><div class="label">Fair</div></div>
-      <div class="grade-cell"><div class="g">1A</div><div class="label">Practice</div></div>
-    </div>
-  </div>
-
-  <section class="section">
+  <section class="section" id="grading">
     <div class="section-head">
-      <h2>Why golfers buy from us</h2>
-      <p>We're not just clearing out a garage full of range balls.</p>
+      <h2>Grading guide</h2>
+      <div class="rule"></div>
     </div>
-    <div class="why-grid">
-      <div class="why-card">
-        <span class="why-num">01</span>
-        <h3>Real grading</h3>
-        <p>No "mystery mixes" — every lot is sorted by cosmetic condition, so you know what you're getting before it ships.</p>
+
+    <div class="grade-row">
+      <div class="grade-badge">5A</div>
+      <div class="grade-body">
+        <h3>Like new</h3>
+        <p>Appears virtually flawless. No scuffs, marks, or discoloration. Full play quality.</p>
       </div>
-      <div class="why-card">
-        <span class="why-num">02</span>
-        <h3>Combined shipping</h3>
-        <p>Buy more than one lot and we'll bundle your shipment to save you on postage.</p>
+    </div>
+    <div class="grade-row">
+      <div class="grade-badge">4A</div>
+      <div class="grade-body">
+        <h3>Excellent condition</h3>
+        <p>Minimal signs of play. No scuffs, may have faint marks. Excellent play quality.</p>
       </div>
-      <div class="why-card">
-        <span class="why-num">03</span>
-        <h3>Fast turnaround</h3>
-        <p>Orders ship within 1–2 business days, tracked door to door.</p>
+    </div>
+    <div class="grade-row">
+      <div class="grade-badge">3A</div>
+      <div class="grade-body">
+        <h3>Good condition</h3>
+        <p>Moderate signs of play. Some scuffs, marks, or discoloration. Good play quality.</p>
+      </div>
+    </div>
+    <div class="grade-row">
+      <div class="grade-badge">2A</div>
+      <div class="grade-body">
+        <h3>Fair condition</h3>
+        <p>Heavy signs of play. Scuffs, marks, and discoloration. May have minor blemishes. Still playable.</p>
+      </div>
+    </div>
+    <div class="grade-row">
+      <div class="grade-badge">1A</div>
+      <div class="grade-body">
+        <h3>Practice / heavily used</h3>
+        <p>Extensive wear and discoloration. Heavy scuffs, cuts, or abrasions. Ideal for practice or range use.</p>
       </div>
     </div>
   </section>
 
   <section class="products" id="products">
-    <div class="section" style="padding-top:4rem;">
+    <div class="section">
       <div class="section-head">
         <h2>Current lots</h2>
-        <p>Mixed brands, honest grades, buyer pays shipping.</p>
+        <div class="rule"></div>
       </div>
       <div class="product-grid">
         <div class="product-card">
           <span class="tag">1A–2A</span>
-          <h3>12-Pack Practice Balls</h3>
+          <h3>12-Pack Practice</h3>
           <div class="price">$7.50</div>
           <p>Heavily used, ideal for the range or a shag bag.</p>
         </div>
@@ -279,9 +288,38 @@
     </div>
   </section>
 
+  <section class="section" id="faq">
+    <div class="section-head">
+      <h2>FAQs</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="faq-item">
+      <h3>How are the balls graded?</h3>
+      <p>Our balls are meticulously graded based on quality and condition. We categorize them into various grades, ensuring you receive the best value for your purchase.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Are the balls cleaned?</h3>
+      <p>Yes, all our balls undergo a thorough cleaning process to ensure they're in top condition and ready for use upon arrival.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Do you offer combined shipping?</h3>
+      <p>Absolutely! We offer combined shipping to help you save on costs when purchasing multiple items. Be sure to select this option during checkout.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How fast is shipping?</h3>
+      <p>While we strive for prompt delivery, most orders ship within 2–5 business days, but they can still arrive later.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I request a custom mix?</h3>
+      <p>Yes, you can request a custom mix of balls. Please contact us with your specific requirements, and we'll do our best to accommodate your needs.</p>
+    </div>
+  </section>
+
   <footer>
-    <div class="wordmark-small">OUT OF BOUNDS</div>
-    <p>A test page — not a live store yet.</p>
+    <div class="foot-line"></div>
+    <div class="brand-note">OUT OF BOUNDS</div>
+    <p>Check out "Out Of Bounds" for all our golf ball listings — new balls added regularly.</p>
   </footer>
 
 </body>
